@@ -1,0 +1,48 @@
+@page
+@model MusicLibrary.Pages.Albums.IndexModel
+@{
+    ViewData["Title"] = Model.ArtistId.HasValue ? "Albums By Artist" : "All Albums";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New Album</a>
+    @if (Model.ArtistId.HasValue)
+    {
+        <a asp-page="Index" class="btn btn-secondary">View All Albums</a>
+    }
+</p>
+
+<partial name="_StatusMessage" model="@(TempData["StatusMessage"] as string)" />
+
+@if (Model.Albums.Count == 0)
+{
+    <p>No albums yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Album Name</th>
+                <th>Artist</th>
+                <th>Release Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var album in Model.Albums)
+            {
+                <tr>
+                    <td>@album.Title</td>
+                    <td>@album.Artist.Name</td>
+                    <td>@album.ReleaseYear</td>
+                    <td>
+                        <a asp-page="/Songs/Index" asp-route-albumId="@album.Id" class="btn btn-sm btn-outline-info">View Songs</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

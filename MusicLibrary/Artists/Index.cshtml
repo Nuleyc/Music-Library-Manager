@@ -1,0 +1,41 @@
+@page
+@model MusicLibrary.Pages.Artists.IndexModel
+@{
+    ViewData["Title"] = "Artists";
+}
+
+<h2>Artists</h2>
+
+<p>
+    <a asp-page="Create">Create New Artist</a>
+</p>
+
+<partial name="_StatusMessage" model="TempData["StatusMessage"]" as string"/>
+
+@if (Model.Artists.Count == 0)
+{
+    <p>No artists yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var artist in Model.Artists)
+            {
+                <tr>
+                    <td>@artist.Name</td>
+                    <td>
+                        <a asp-page="/Albums/Index" asp-route-artistId="@artist.Id" class="btn btn-secondary">View Albums</a>
+                        <a asp-page="/Songs/Index" asp-route-artistId="@artist.Id" class="btn btn-sm btn-outline-info">View Songs</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

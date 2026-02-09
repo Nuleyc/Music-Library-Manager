@@ -1,0 +1,73 @@
+@page
+@model MusicLibrary.Pages.Songs.CreateModel
+
+@{
+    ViewData["Title"] = "Create Song";
+}
+
+<h2>Create Song</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Input.Title" class="form-label"></label>
+        <input asp-for="Input.Title" class="form-control" />
+        <span asp-validation-for="Input.Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.ReleaseYear" class="form-label"></label>
+        <input asp-for="Input.ReleaseYear" class="form-control" />
+        <span asp-validation-for="Input.ReleaseYear" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Genre" class="form-label"></label>
+        <input asp-for="Input.Genre" class="form-control" />
+        <span asp-validation-for="Input.Genre" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.ArtistId" class="form-label"></label>
+        <select asp-for="Input.ArtistId" class="form-select">
+            <option value="0">-- Select Artist --</option>
+            @foreach (var artist in Model.Artists)
+            {
+                <option value="@artist.Id">@artist.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Input.ArtistId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.AlbumId" class="form-label"></label>
+        <select asp-for="Input.AlbumId" class="form-select" id="albumSelect">
+            <option value="0">-- Select Album --</option>
+            @foreach (var album in Model.Albums)
+            {
+                <option value="@album.Id" data-artist-id="@album.ArtistId">@album.Title (@album.ReleaseYear)</option>
+            }
+        </select>
+        <span asp-validation-for="Input.AlbumId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        //filter albums based on selected artist
+        document.getElementById('artistSelect').addEventListener('change', function () {
+            var selectedArtistId = this.value;
+            var albumSelect = document.getElementById('albumSelect');
+
+            albumSelect.disabled = selectedArtistId === '0';
+            albumSelect.value = "0"; // Reset album selection when artist changes
+
+            for (var i = 0; i < albumSelect.options.length; i++) {
+                var option = albumSelect.options[i];
+                var optionArtistId = option.getAttribute('data-artist-id');
+                option.style.display = (selectedArtistId === '0' || albumArtistId === artistId) ? '' : 'none';
+            }
+
+            albumSelect.value = "0"; // Reset album selection when artist changes
+        });
+    </script>
+}

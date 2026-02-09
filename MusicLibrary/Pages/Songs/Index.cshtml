@@ -1,0 +1,58 @@
+@page
+@model MusicLibrary.Pages.Songs.IndexModel
+@{
+    ViewData["Title"] = Model.ArtistId.HasValue ? "Songs By Artist" : Model.AlbumId.HasValue ? "Songs By Album" : "All Songs";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New Song</a>
+    @if (Model.ArtistId.HasValue || Model.AlbumId.HasValue)
+    {
+        <a asp-page="Index" class="btn btn-secondary">View All Songs</a>
+    }
+
+</p>
+
+<partial name="_StatusMessage" model="@(TempData["StatusMessage"] as string)" />
+
+@if (Model.Songs.Count == 0)
+{
+    <p>No songs yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Song Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var song in Model.Songs)
+            {
+                <tr>
+                    <td>@song.Title</td>
+                    <td>@song.Album.Artist.Name</td>
+                    <td>@song.Album.Title</td>
+                    <td>@song.Genre</td>
+                    <td>@song.ReleaseYear</td>
+                    <td>
+                        <a asp-page="Details" asp-route-id="@song.Id" class="btn btn-sm btn-outline-info">View Details</a>
+
+                        <a asp-page="Edit" asp-route-id="@song.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+
+                        <a asp-page="Delete" asp-route-id="@song.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
