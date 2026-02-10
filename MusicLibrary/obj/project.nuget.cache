@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rv6WGL5CH9Q=",
+  "dgSpecHash": "np2iSXYco5w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\web\\MusicLibrary\\MusicLibrary.csproj",
+  "projectFilePath": "C:\\Users\\web\\Documents\\GitHub\\Music-Library-Manager\\MusicLibrary\\MusicLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\web\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\web\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

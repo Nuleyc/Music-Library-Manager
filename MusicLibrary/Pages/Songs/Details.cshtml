@@ -1,0 +1,42 @@
+@page "{id}"
+@model MusicLibrary.Pages.Songs.DetailsModel
+@{
+    ViewData["Title"] = "Song Details";
+}
+
+@if (Model.Song == null)
+{
+    <h2>Song not found</h2>
+    <p>The requested song does not exist.</p>
+    <a asp-page="Index" class="btn btn-secondary">Back to Songs</a>
+}
+else
+{
+    <div class="song-details">
+        <h2>@Model.Song.Title</h2>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">Artist</div>
+                    <div class="col-sm-9">
+                        <a asp-page="/Songs/Index" asp-route-artistId="@Model.Song.ArtistId">@Model.Song.Artist.Name</a>
+                    </div>
+                    <div class="col-sm-3">Album</div>
+                    <div class="col-sm-9">
+                        <a asp-page="/Songs/Index" asp-route-albumId="@Model.Song.AlbumId">@Model.Song.Album.Title</a>
+                    </div>
+                    <div class="col-sm-3">Genre</div>
+                    <div class="col-sm-9">@Model.Song.Genre</div>
+                    <div class="col-sm-3">Release Year</div>
+                    <div class="col-sm-9">@Model.Song.ReleaseYear</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a asp-page="Edit" asp-route-id="@Model.Song.Id" class="btn btn-primary">Edit</a>
+            <a asp-page="Index" class="btn btn-secondary">Back to Songs</a>
+        </div>
+    </div>
+}

@@ -28,4 +28,7 @@ app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
+   app.MapSongEndpoints();
+      
+
 app.Run();

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\web\\MusicLibrary\\MusicLibrary.csproj": {}
+    "C:\\Users\\web\\Documents\\GitHub\\Music-Library-Manager\\MusicLibrary\\MusicLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\web\\MusicLibrary\\MusicLibrary.csproj": {
+    "C:\\Users\\web\\Documents\\GitHub\\Music-Library-Manager\\MusicLibrary\\MusicLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\web\\MusicLibrary\\MusicLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\web\\Documents\\GitHub\\Music-Library-Manager\\MusicLibrary\\MusicLibrary.csproj",
         "projectName": "MusicLibrary",
-        "projectPath": "C:\\Users\\web\\MusicLibrary\\MusicLibrary.csproj",
+        "projectPath": "C:\\Users\\web\\Documents\\GitHub\\Music-Library-Manager\\MusicLibrary\\MusicLibrary.csproj",
         "packagesPath": "C:\\Users\\web\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\web\\MusicLibrary\\obj\\",
+        "outputPath": "C:\\Users\\web\\Documents\\GitHub\\Music-Library-Manager\\MusicLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\web\\AppData\\Roaming\\NuGet\\NuGet.Config"

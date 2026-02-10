@@ -10,7 +10,7 @@
     <a asp-page="Create">Create New Artist</a>
 </p>
 
-<partial name="_StatusMessage" model="TempData["StatusMessage"]" as string"/>
+<partial name="_StatusMessage" model="@(TempData["StatusMessage"] as string)" />
 
 @if (Model.Artists.Count == 0)
 {
